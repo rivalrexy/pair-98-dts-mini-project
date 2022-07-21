@@ -10,6 +10,7 @@ import { useParams, Link } from "react-router-dom";
 const SelectedMovies = () => {
   const [movies, setMovies] = useState([]);
   const [moviesFiltered, setMoviesFiltered] = useState(movies);
+  const [ytbKey, setYtbKey] = useState(movies);
   let params = useParams();
 
   useEffect(() => {
@@ -28,15 +29,35 @@ const SelectedMovies = () => {
     fetchMovies();
   }, [moviesFiltered, params.movieId]);
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${params.movieId}/videos?api_key=d450ebab7993dde3b191cfc42c2e0b85`
+        );
+        let data = response.data.results[0];
+        setYtbKey(data);
+      } catch (err) {}
+    };
+    fetchMovies();
+    console.log(ytbKey);
+  }, [params.movieId, ytbKey]);
+
   return (
     <>
       <Box
+        height="20%"
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}>
-        <CardMovieSelected key={params.movieId} props={moviesFiltered} />;
+        <CardMovieSelected
+          key={params.movieId}
+          props={moviesFiltered}
+          ytbKey={ytbKey}
+        />
+        ;
       </Box>
 
       <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>

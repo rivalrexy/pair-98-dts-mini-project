@@ -5,7 +5,13 @@ const base = "https://image.tmdb.org/t/p/w400/";
 const CardMovie = ({ props }) => {
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column", height: "50%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "10%",
+          height: "50%",
+        }}>
         <Card
           sx={{
             minWidth: 150,
