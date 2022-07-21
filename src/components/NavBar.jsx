@@ -16,6 +16,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { logOut } from "../authentication/firebase";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Home", "Series", "Movies", "News and Popular", "My List"];
 const settings = ["Logout"];
@@ -24,6 +26,11 @@ const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   // const [url, setUrl] = React.useState("/");
+  const navigate = useNavigate();
+  const LogoutHandler = async () => {
+    await logOut();
+    navigate("/login");
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -208,7 +215,7 @@ const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={LogoutHandler}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
