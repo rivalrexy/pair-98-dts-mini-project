@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./containers/Home";
+import Profile from "./containers/Profile";
+import React from "react";
+import { Box } from "@mui/material";
+import { Routes, Route, Link } from "react-router-dom";
+import Navbar from "./components/NavBar";
+import SelectedMovies from "./containers/SelectedMovies";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Box
+        display="flex"
+        flexDirection="column"
+        sx={{ minHeight: "100vh", bgcolor: "black" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="movie/:movieId" element={<SelectedMovies />} />
+        </Routes>
+      </Box>
+    </>
   );
-}
+};
 
 export default App;
