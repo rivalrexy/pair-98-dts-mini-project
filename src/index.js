@@ -1,17 +1,55 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedComponent from "./components/ProtectedComponent";
+import Login from "./containers/LoginPage";
+import SignUp from "./containers/RegisterPage";
+import Home from "./containers/Home";
+import Profile from "./containers/Profile";
+import SelectedMovies from "./containers/SelectedMovies";
+import Navbar from "./components/NavBar";
+import { Box } from "@mui/material";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProtectedComponent>
-        <App />
-      </ProtectedComponent>
+      <Navbar />
+      <Box
+        display="flex"
+        flexDirection="column"
+        sx={{ minHeight: "100vh", bgcolor: "black" }}>
+        <Routes>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<SignUp />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedComponent>
+                <Home />
+              </ProtectedComponent>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedComponent>
+                <Profile />
+              </ProtectedComponent>
+            }
+          />
+          <Route
+            path="movie/:movieId"
+            element={
+              <ProtectedComponent>
+                <SelectedMovies />
+              </ProtectedComponent>
+            }
+          />
+        </Routes>
+      </Box>
     </BrowserRouter>
   </React.StrictMode>
 );
