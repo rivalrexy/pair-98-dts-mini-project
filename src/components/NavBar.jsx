@@ -23,7 +23,7 @@ const settings = ["Logout"];
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [url, setUrl] = React.useState("/");
+  // const [url, setUrl] = React.useState("/");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

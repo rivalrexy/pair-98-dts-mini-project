@@ -2,7 +2,7 @@ import Home from "./containers/Home";
 import Profile from "./containers/Profile";
 import React from "react";
 import { Box } from "@mui/material";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import SelectedMovies from "./containers/SelectedMovies";
 

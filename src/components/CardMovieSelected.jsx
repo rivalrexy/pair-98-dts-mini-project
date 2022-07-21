@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Box, Typography, CardMedia, CardContent } from "@mui/material";
+import { Card, Box, Typography, CardMedia } from "@mui/material";
 
 const base = "https://image.tmdb.org/t/p/w1280/";
 const CardMovieSelected = ({ props }) => {

@@ -3,9 +3,9 @@ import CardMovie from "../components/CardMovie";
 import CardMovieSelected from "../components/CardMovieSelected";
 
 import axios from "axios";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useParams, Link } from "react-router-dom";
-import SendIcon from "@mui/icons-material/Send";
+// import SendIcon from "@mui/icons-material/Send";
 
 const SelectedMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -26,7 +26,7 @@ const SelectedMovies = () => {
       } catch (err) {}
     };
     fetchMovies();
-  }, [moviesFiltered]);
+  }, [moviesFiltered, params.movieId]);
 
   return (
     <>
